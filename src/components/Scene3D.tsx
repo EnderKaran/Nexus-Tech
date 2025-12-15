@@ -12,7 +12,7 @@ const Scene3D = ({ onLoad }: Scene3DProps) => {
       <Suspense fallback={null}>
         <Spline 
           className="w-full h-full"
-          scene="https://prod.spline.design/OcUbVaJ3O-KtrXgk/scene.splinecode"
+          scene="https://prod.spline.design/B7s5MI3oKAHc1igj/scene.splinecode"
           onLoad={onLoad}
         />
         

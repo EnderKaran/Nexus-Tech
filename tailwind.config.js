@@ -15,6 +15,11 @@ export default {
           sans: ['Inter', 'sans-serif'],
           tech: ['Orbitron', 'sans-serif'], // Başlıklar için fütüristik font
         }
+        ,
+        animation: {
+          'scan': 'scan 4s linear infinite',
+          'spin-slow': 'spin 10s linear infinite',
+        }
       },
     },
     plugins: [],

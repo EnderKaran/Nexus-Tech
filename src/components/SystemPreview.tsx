@@ -11,7 +11,6 @@ import motherboardImg from '../assets/motherboard.png';
 import robotarm from '../assets/robotarm.png';
 import roboteye from '../assets/robot-eye.png';
 
-// --- MOCK DATA (Sistem Kataloğu) ---
 const systemsData = [
   {
     id: "SYS-01",
@@ -49,37 +48,34 @@ const SystemPreview = () => {
 
   // --- GSAP ANIMASYONLARI ---
   useGSAP(() => {
-    // 1. Başlık Animasyonu (Her değişimde)
     gsap.fromTo('#sys-title', 
       { opacity: 0, x: -50, filter: "blur(10px)" }, 
       { opacity: 1, x: 0, filter: "blur(0px)", duration: 0.8, ease: "power3.out" }
     );
 
-    // 2. Görsel Animasyonu (Hologram efekti: scale + opacity)
+   
     gsap.fromTo('.holo-img', 
       { opacity: 0, scale: 1.1, filter: "grayscale(100%)" }, 
       { opacity: 1, scale: 1, filter: "grayscale(0%)", duration: 1, ease: "power2.inOut" }
     );
 
-    // 3. Detaylar (Alttan yukarı)
+    
     gsap.fromTo('.sys-details', 
       { y: 30, opacity: 0 }, 
       { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, ease: "back.out(1.7)" }
     );
 
-    // 4. İstatistik Barları (Genişleme)
     gsap.fromTo('.stat-fill',
         { width: 0 },
         { width: "100%", duration: 1, ease: "power2.out", delay: 0.2 }
     );
 
-  }, { scope: containerRef, dependencies: [currentIndex] }); // currentIndex değişince tekrar çalışır
+  }, { scope: containerRef, dependencies: [currentIndex] }); 
 
   // --- NAVİGASYON MANTIĞI ---
   const totalSystems = systemsData.length;
 
   const goToSlide = (index: number) => {
-    // Döngüsel mantık (modülo)
     const newIndex = (index + totalSystems) % totalSystems;
     setCurrentIndex(newIndex);
   };
@@ -99,7 +95,7 @@ const SystemPreview = () => {
       className="relative z-10 w-full min-h-screen bg-[#050505] py-24 px-4 flex flex-col items-center justify-center overflow-hidden"
     >
       
-      {/* Dekoratif Arka Plan */}
+     
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,243,255,0.05)_0%,transparent_70%)] pointer-events-none"></div>
 
       {/* --- ÜST SEKMELER (TABS) --- */}

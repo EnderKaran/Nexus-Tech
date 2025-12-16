@@ -65,7 +65,6 @@ const About = () => {
                 Nexus.Tech utilizes <span className="text-white">WebGL 2.0</span> and <span className="text-[#00f3ff]">Neural Processing</span> to deliver cinema-grade 3D experiences directly in your browser.
               </p>
 
-              {/* BUTON DÜZELTME: Hover olunca Siyah DEĞİL, Mor oluyor */}
               <Button 
                 className="about-title h-12 px-8 rounded-none border border-[#00f3ff]/50 text-[#00f3ff] bg-[#00f3ff]/5 
                 hover:bg-[#b92bca] hover:text-white hover:border-[#b92bca] hover:shadow-[0_0_20px_#b92bca]

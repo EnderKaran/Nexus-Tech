@@ -21,7 +21,7 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: "SYSTEM", href: "#system" },
+    { name: "SYSTEM", href: "#hero" },
     { name: "MISSION", href: "#mission" },
     { name: "MODULES", href: "#modules" },
   ];

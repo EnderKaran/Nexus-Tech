@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
+import HackerText from './HackerText';
+
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
 
-  // Scroll olayını dinle
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
@@ -30,7 +31,6 @@ const Navbar = () => {
         
         {/* --- SOL: LOGO & STATUS --- */}
         <div className="flex items-center gap-4 group cursor-pointer">
-          {/* Audio Visualizer (Süs Animasyonu) */}
           <div className="flex gap-0.5 h-4 items-end">
             <span className="w-0.5 bg-cyber h-full animate-[pulse_0.5s_infinite]"></span>
             <span className="w-0.5 bg-cyber h-1/2 animate-[pulse_0.7s_infinite]"></span>
@@ -45,7 +45,6 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* --- ORTA: MENÜ (Futuristik Bracket Style) --- */}
         <ul className="hidden md:flex gap-10 font-mono text-xs tracking-[0.2em] text-gray-400">
           {navLinks.map((link) => (
             <li key={link.name} className="relative group">
@@ -55,7 +54,7 @@ const Navbar = () => {
                   [
                 </span>
                 
-                {link.name}
+                <HackerText text={link.name} />
                 
                 {/* Sağ Bracket */}
                 <span className="opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-cyber">

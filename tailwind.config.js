@@ -1,26 +1,29 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-    content: [
-      "./index.html",
-      "./src/**/*.{js,ts,jsx,tsx}",
-    ],
-    theme: {
-      extend: {
-        colors: {
-          neon: "#00f3ff",  // Siber mavi
-          dark: "#050505",  // Derin siyah
-          glass: "rgba(255, 255, 255, 0.1)", // Cam efekti için
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {
+      colors: {
+        neon: "#00f3ff",  // Mavi/Cyan
+        cyber: "#f2cb05", // Sarı/Cyberpunk 2077
+      },
+      fontFamily: {
+        tech: ["Orbitron", "sans-serif"], // Google Fonts'tan Orbitron eklemelisin
+        mono: ["Share Tech Mono", "monospace"], // Google Fonts'tan Share Tech Mono
+      },
+      animation: {
+        scan: "scan 4s linear infinite",
+      },
+      keyframes: {
+        scan: {
+          "0%": { transform: "translateY(-100%)" },
+          "100%": { transform: "translateY(100%)" },
         },
-        fontFamily: {
-          sans: ['Inter', 'sans-serif'],
-          tech: ['Orbitron', 'sans-serif'], // Başlıklar için fütüristik font
-        }
-        ,
-        animation: {
-          'scan': 'scan 4s linear infinite',
-          'spin-slow': 'spin 10s linear infinite',
-        }
       },
     },
-    plugins: [],
-  }
+  },
+  plugins: [],
+}

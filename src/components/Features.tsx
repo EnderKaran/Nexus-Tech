@@ -8,7 +8,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 
-//images
+// Images
 import neuralLink from '../assets/neural-link.png';
 import cyberoptics from '../assets/cyber-optics.png';
 import biosyntheics from '../assets/bio-synthetics.png';
@@ -72,34 +72,33 @@ const Features = () => {
   }, { scope: containerRef });
 
   return (
-    <section ref={containerRef} id="modules" className="relative w-full py-24 bg-[#0a0a0a] px-4 md:px-10 overflow-hidden">
+    <section ref={containerRef} id="modules" className="relative w-full py-24 bg-[#050505] px-4 md:px-10 overflow-hidden">
       
-      {/* Arka Plan Süsü */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px] pointer-events-none"></div>
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#00f3ff]/5 rounded-full blur-[120px] pointer-events-none"></div>
 
       {/* Başlık Alanı */}
       <div className="max-w-7xl mx-auto mb-16">
         <div className="flex flex-col md:flex-row justify-between items-end pb-8">
           <div className="space-y-4">
-            <Badge variant="outline" className="text-primary border-primary/50 tracking-[0.2em]">
+            <Badge variant="outline" className="border-[#b92bca] text-[#b92bca] shadow-[0_0_10px_rgba(185,43,202,0.3)] tracking-[0.2em] animate-pulse">
               SYSTEM_MODULES
             </Badge>
+            
             <h2 className="text-4xl md:text-6xl font-tech font-bold text-white">
-              SYSTEM <span className="text-primary">UPGRADES</span>
+              SYSTEM <span className="text-[#00f3ff] drop-shadow-[0_0_15px_rgba(0,243,255,0.5)]">UPGRADES</span>
             </h2>
-            <p className="text-muted-foreground max-w-md font-sans">
+            <p className="text-gray-400 max-w-md font-sans">
               Upgrade your reality with our latest cybernetic enhancements.
               Compatible with Nexus OS v4.2.
             </p>
           </div>
           
           <div className="mt-8 md:mt-0 text-right">
-            <div className="text-5xl font-tech text-primary font-bold">99.9%</div>
-            <div className="text-muted-foreground text-xs tracking-widest uppercase mt-2">Uptime Guarantee</div>
+            <div className="text-5xl font-tech text-[#00f3ff] font-bold">99.9%</div>
+            <div className="text-gray-500 text-xs tracking-widest uppercase mt-2">Uptime Guarantee</div>
           </div>
         </div>
         
-        {/* Shadcn Separator */}
         <Separator className="bg-white/10" />
       </div>
 
@@ -108,7 +107,11 @@ const Features = () => {
         {featuresData.map((item) => (
           <Card 
             key={item.id} 
-            className={`feature-card group relative ${item.col} h-[300px] md:h-[400px] border-white/10 bg-black/40 overflow-hidden rounded-3xl`}
+            className={`feature-card group relative ${item.col} h-[300px] md:h-[400px] 
+            bg-black/40 overflow-hidden rounded-3xl backdrop-blur-sm
+            border border-white/10 
+            hover:border-[#00f3ff]/60 hover:shadow-[0_0_30px_rgba(0,243,255,0.15)] 
+            transition-all duration-500 ease-out`}
           >
             {/* Görsel & Efektler */}
             <div className="absolute inset-0 w-full h-full">
@@ -126,9 +129,10 @@ const Features = () => {
             {/* İçerik */}
             <CardContent className="absolute inset-0 p-8 flex flex-col justify-end">
               
-              {/* Sağ Üst Köşe Numarası (Badge olarak) */}
               <div className="absolute top-6 right-6">
-                <Badge variant="secondary" className="bg-black/50 backdrop-blur-md border border-white/20 text-white group-hover:border-primary group-hover:text-primary transition-colors font-mono">
+                <Badge variant="secondary" className="bg-black/50 backdrop-blur-md border border-white/20 text-white 
+                group-hover:border-[#00f3ff] group-hover:text-[#00f3ff] group-hover:shadow-[0_0_10px_#00f3ff]
+                transition-all duration-300 font-mono">
                   0{item.id}
                 </Badge>
               </div>
@@ -141,8 +145,8 @@ const Features = () => {
                   {item.desc}
                 </p>
                 
-                {/* Alt Çizgi Animasyonu */}
-                <div className="w-0 group-hover:w-full h-0.5 bg-primary mt-4 transition-all duration-500"></div>
+                {/* Alt Çizgi Animasyonu - Güncellendi (Neon Mavi) */}
+                <div className="w-0 group-hover:w-full h-0.5 bg-[#00f3ff] mt-4 shadow-[0_0_10px_#00f3ff] transition-all duration-500"></div>
               </div>
             </CardContent>
           </Card>

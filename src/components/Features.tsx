@@ -2,8 +2,6 @@ import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-// Shadcn Bileşenleri
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
@@ -36,14 +34,14 @@ const featuresData = [
     title: "BIO-SYNTHETICS",
     desc: "Self-healing armor plating.",
     img: biosyntheics,
-    col: "md:col-span-1",
+    col: "md:col-span-1", 
   },
   {
     id: 4,
     title: "DATA CORE",
     desc: "Quantum processing units.",
     img: datacore,
-    col: "md:col-span-2",
+    col: "md:col-span-2", 
   },
 ];
 
@@ -55,28 +53,39 @@ const Features = () => {
 
     const cards = gsap.utils.toArray(".feature-card");
 
-    gsap.from(cards, {
-      y: 100,
-      opacity: 0,
-      duration: 1,
-      stagger: 0.2, 
-      ease: "power4.out",
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top 70%", 
-        end: "bottom 20%",
-        toggleActions: "play none none reverse",
+    gsap.fromTo(cards, 
+      { 
+        y: 60, 
+        opacity: 0,
+        scale: 0.95
+      },
+      {
+        y: 0,
+        opacity: 1,
+        scale: 1,
+        duration: 1.2,
+        stagger: 0.15, 
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 75%", 
+          end: "bottom 20%",
+          toggleActions: "play none none reverse",
+        }
       }
-    });
+    );
 
   }, { scope: containerRef });
 
   return (
-    <section ref={containerRef} id="modules" className="relative w-full py-24 bg-[#050505] px-4 md:px-10 overflow-hidden">
+    <section 
+      ref={containerRef} 
+      id="modules" 
+      className="relative w-full py-24 bg-[#050505] px-4 md:px-10 overflow-hidden"
+    >
       
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#00f3ff]/5 rounded-full blur-[120px] pointer-events-none"></div>
 
-      {/* Başlık Alanı */}
       <div className="max-w-7xl mx-auto mb-16">
         <div className="flex flex-col md:flex-row justify-between items-end pb-8">
           <div className="space-y-4">
@@ -102,31 +111,26 @@ const Features = () => {
         <Separator className="bg-white/10" />
       </div>
 
-      {/* BENTO GRID ALANI */}
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
         {featuresData.map((item) => (
           <Card 
             key={item.id} 
             className={`feature-card group relative ${item.col} h-[300px] md:h-[400px] 
-            bg-black/40 overflow-hidden rounded-3xl backdrop-blur-sm
+            bg-black/60 overflow-hidden rounded-3xl backdrop-blur-sm
             border border-white/10 
             hover:border-[#00f3ff]/60 hover:shadow-[0_0_30px_rgba(0,243,255,0.15)] 
             transition-all duration-500 ease-out`}
           >
-            {/* Görsel & Efektler */}
             <div className="absolute inset-0 w-full h-full">
               <img 
                 src={item.img} 
                 alt={item.title} 
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-80"
+                className="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700"
               />
-              {/* Noise Texture */}
               <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay pointer-events-none"></div>
-              {/* Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
             </div>
 
-            {/* İçerik */}
             <CardContent className="absolute inset-0 p-8 flex flex-col justify-end">
               
               <div className="absolute top-6 right-6">
@@ -145,7 +149,6 @@ const Features = () => {
                   {item.desc}
                 </p>
                 
-                {/* Alt Çizgi Animasyonu - Güncellendi (Neon Mavi) */}
                 <div className="w-0 group-hover:w-full h-0.5 bg-[#00f3ff] mt-4 shadow-[0_0_10px_#00f3ff] transition-all duration-500"></div>
               </div>
             </CardContent>

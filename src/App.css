@@ -2,54 +2,36 @@
 
 @layer base {
   :root {
-    /* --- TEMEL RENKLER (Cyberpunk Koyu Tema Varsayılan Oldu) --- */
-    
-    /* Arka Plan: #050505 -> HSL(0, 0%, 2%) */
     --background: 0 0% 2%;
     
-    /* Yazı Rengi: Beyaz -> HSL(0, 0%, 100%) */
     --foreground: 0 0% 100%;
 
-    /* Kart Arka Planı: Hafif saydam siyah */
     --card: 0 0% 4%;
     --card-foreground: 0 0% 100%;
 
-    /* Popover / Açılır Menüler */
     --popover: 0 0% 4%;
     --popover-foreground: 0 0% 100%;
 
-    /* --- ANA RENKLER (Senin Paletin) --- */
-
-    /* Primary: NEON BLUE (#00f3ff) -> HSL(183, 100%, 50%) */
     --primary: 183 100% 50%;
     --primary-foreground: 0 0% 0%; /* Neon üstüne siyah yazı okunur */
 
-    /* Secondary: CYBER YELLOW (#f2cb05) -> HSL(50, 96%, 48%) */
     --secondary: 50 96% 48%;
     --secondary-foreground: 0 0% 0%;
 
-    /* Accent: Hover durumları için (Yine Neon Mavi) */
     --accent: 183 100% 50%;
     --accent-foreground: 0 0% 0%;
 
-    /* --- DİĞER ARAYÜZ ELEMANLARI --- */
-
-    /* Muted: Pasif yazılar */
     --muted: 240 3.7% 15.9%;
     --muted-foreground: 240 5% 64.9%;
 
-    /* Destructive: Hata mesajları (Kırmızı) */
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
 
-    /* Çizgiler ve Kenarlıklar */
     --border: 240 3.7% 15.9%;
     --input: 240 3.7% 15.9%;
     
-    /* Focus Halkası (Neon) */
     --ring: 183 100% 50%;
 
-    /* Köşe Yuvarlaklığı (Daha keskin, tech görünüm için) */
     --radius: 0.2rem;
   }
 }
@@ -58,12 +40,10 @@
  
   body {
     
-    /* Fontları yumuşatma ve scrollbar gizleme opsiyonel */
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
 
-/* --- SCROLLBAR ÖZELLEŞTİRME (Webkit) --- */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -75,5 +55,5 @@
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #00f3ff; /* Neon hover */
+  background: #00f3ff;
 }

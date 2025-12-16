@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Features from "./components/Features";
+import Mission from "./components/Mission";
 
 import CustomCursor from "./components/CustomCursor";
 
@@ -23,6 +24,7 @@ function App() {
         <Hero />
         <About />
         <Features />
+        <Mission />
       </main>
 
     </div>

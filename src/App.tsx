@@ -5,6 +5,7 @@ import Hero from "./components/Hero";
 import About from "./components/About";
 import Features from "./components/Features";
 import Mission from "./components/Mission";
+import SystemPreview from "./components/SystemPreview";
 
 import CustomCursor from "./components/CustomCursor";
 
@@ -25,6 +26,7 @@ function App() {
         <About />
         <Features />
         <Mission />
+        <SystemPreview />
       </main>
 
     </div>

@@ -1,14 +1,21 @@
 import { useState, useEffect } from "react";
-import HackerText from './HackerText';
-
+import { Menu } from "lucide-react"; // npm install lucide-react yapmalısın
+import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu";
+import HackerText from "./HackerText";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -21,75 +28,81 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b ${
         scrolled
-          ? "py-4 bg-black/80 backdrop-blur-md border-b border-white/5"
-          : "py-6 bg-transparent"
+          ? "py-2 bg-black/80 backdrop-blur-md border-white/10"
+          : "py-6 bg-transparent border-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-10 flex justify-between items-center">
+      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         
-        {/* --- SOL: LOGO & STATUS --- */}
-        <div className="flex items-center gap-4 group cursor-pointer">
+        {/* LOGO */}
+        <div className="flex items-center gap-4 cursor-pointer group">
           <div className="flex gap-0.5 h-4 items-end">
-            <span className="w-0.5 bg-cyber h-full animate-[pulse_0.5s_infinite]"></span>
-            <span className="w-0.5 bg-cyber h-1/2 animate-[pulse_0.7s_infinite]"></span>
-            <span className="w-0.5 bg-cyber h-3/4 animate-[pulse_0.6s_infinite]"></span>
+            <span className="w-0.5 bg-primary h-full animate-[pulse_0.5s_infinite]"></span>
+            <span className="w-0.5 bg-primary h-1/2 animate-[pulse_0.7s_infinite]"></span>
           </div>
-
           <div className="font-tech text-2xl tracking-tighter text-white">
-            NEXUS
-            <span className="text-cyber drop-shadow-[0_0_10px_rgba(242,203,5,0.8)] group-hover:text-white transition-colors">
-              .OS
-            </span>
+            NEXUS<span className="text-primary group-hover:text-white transition-colors">.OS</span>
           </div>
         </div>
 
-        <ul className="hidden md:flex gap-10 font-mono text-xs tracking-[0.2em] text-gray-400">
-          {navLinks.map((link) => (
-            <li key={link.name} className="relative group">
-              <a href={link.href} className="flex items-center gap-2 hover:text-white transition-colors duration-300">
-                {/* Sol Bracket */}
-                <span className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-cyber">
-                  [
-                </span>
-                
-                <HackerText text={link.name} />
-                
-                {/* Sağ Bracket */}
-                <span className="opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-cyber">
-                  ]
-                </span>
-              </a>
-              {/* Alt Çizgi Glitch */}
-              <span className="absolute -bottom-1 left-0 w-0 h-px bg-cyber group-hover:w-full transition-all duration-300"></span>
-            </li>
-          ))}
-        </ul>
+        {/* DESKTOP MENU (SHADCN) */}
+        <div className="hidden md:block">
+          <NavigationMenu>
+            <NavigationMenuList className="gap-2">
+              {navLinks.map((link) => (
+                <NavigationMenuItem key={link.name}>
+                  <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+                    <a 
+                      href={link.href} 
+                      className="bg-transparent hover:bg-white/5 text-gray-400 hover:text-primary font-mono tracking-widest data-[active]:bg-transparent focus:bg-transparent"
+                    >
+                      <span className="text-primary opacity-50 mr-1">[</span>
+                      <HackerText text={link.name} />
+                      <span className="text-primary opacity-50 ml-1">]</span>
+                    </a>
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
+              ))}
+            </NavigationMenuList>
+          </NavigationMenu>
+        </div>
 
+        {/* ACTION BUTTON & MOBILE MENU */}
         <div className="flex items-center gap-4">
-          <button 
-            className="relative px-6 py-2 bg-transparent text-cyber font-tech text-xs tracking-widest border border-cyber/30 hover:bg-cyber hover:text-black transition-all duration-300 group"
-            style={{ clipPath: "polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%)" }}
+          <Button 
+            variant="outline" 
+            className="hidden md:flex border-primary/50 text-primary hover:bg-primary hover:text-black font-tech tracking-widest rounded-none relative overflow-hidden group"
           >
-            {/* Buton içindeki dekoratif çizgiler */}
-            <span className="absolute top-0 right-0 w-2 h-2 border-t border-r border-cyber opacity-50 group-hover:border-black"></span>
-            <span className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-cyber opacity-50 group-hover:border-black"></span>
-            
-            LOGIN_INIT
-          </button>
+            <span className="relative z-10">LOGIN_INIT</span>
+            {/* Hover Efekti */}
+            <div className="absolute inset-0 bg-primary translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-0"></div>
+          </Button>
 
-          <div className="md:hidden flex flex-col gap-1.5 cursor-pointer group">
-            <span className="w-8 h-0.5 bg-white group-hover:bg-cyber transition-colors"></span>
-            <span className="w-5 h-0.5 bg-white group-hover:bg-cyber group-hover:w-8 transition-all duration-300 ml-auto"></span>
-            <span className="w-8 h-0.5 bg-white group-hover:bg-cyber transition-colors"></span>
-          </div>
+          {/* MOBILE MENU (SHEET) */}
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon" className="md:hidden text-white">
+                <Menu className="w-6 h-6" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="bg-black/95 border-l border-white/10 w-[300px]">
+              <div className="flex flex-col gap-8 mt-10">
+                {navLinks.map((link) => (
+                  <a key={link.name} href={link.href} className="text-2xl font-tech text-white hover:text-primary transition-colors">
+                    {link.name}
+                  </a>
+                ))}
+                <Button className="w-full bg-primary text-black font-bold font-tech rounded-none">
+                  INITIALIZE
+                </Button>
+              </div>
+            </SheetContent>
+          </Sheet>
         </div>
 
       </div>
-      
-      {/* Navbar Altı Dekoratif Çizgi (Sadece scroll olunca veya her zaman) */}
-      <div className="absolute bottom-0 left-0 w-full h-px bg-linear-to-r from-transparent via-cyber/20 to-transparent"></div>
     </nav>
   );
 };
